@@ -1,15 +1,20 @@
-# --- build stage ---
 FROM cgr.dev/chainguard/dotnet-sdk:latest AS build
+USER root
 WORKDIR /src
-COPY --chown=nonroot:nonroot dotnet-test.csproj ./
+COPY dotnet-test.csproj ./
 RUN dotnet restore
-COPY --chown=nonroot:nonroot . .
+COPY . .
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+COPY certificate.crt /usr/local/share/ca-certificates/
+RUN cat /usr/local/share/ca-certificates/certificate.crt >> /etc/ssl/certs/ca-certificates.crt
+RUN chown -R nonroot:nonroot /app/publish
+USER nonroot
 
 # --- runtime stage ---
 FROM cgr.dev/chainguard/dotnet-runtime:latest AS runtime
 WORKDIR /app
 COPY --from=build /app/publish ./
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 # Env options:
 # - WELL_KNOWN_URL                (full URL) OR
