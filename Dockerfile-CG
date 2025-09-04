@@ -1,3 +1,4 @@
+# --- build stage ---
 FROM cgr.dev/chainguard/dotnet-sdk:latest AS build
 USER root
 WORKDIR /src
