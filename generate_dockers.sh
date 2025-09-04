@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Registry and project path
 REGISTRY="registry.omni.mil"
-PROJECT="dotnet-test"
+PROJECT="dotnet_test"
 IMAGE="dotnet-test"
 
 # List of variants (Dockerfiles must be named dotnet-MS, dotnet-IB, dotnet-CG)
@@ -14,13 +14,13 @@ echo "Logging into $REGISTRY..."
 docker login "$REGISTRY"
 
 for variant in "${VARIANTS[@]}"; do
-  DOCKERFILE="dotnet-$variant"
+  DOCKERFILE="Dockerfile-$variant"
   TAG=$(echo "$variant" | tr '[:upper:]' '[:lower:]')   # ms, ib, cg
 
   FULL_IMAGE="$REGISTRY/$PROJECT/$IMAGE:$TAG"
 
   echo "======================================"
-  echo " Building and pushing $FULL_IMAGE"
+  echo " Building and Pushing: $FULL_IMAGE"
   echo " Using Dockerfile: $DOCKERFILE"
   echo "======================================"
 
