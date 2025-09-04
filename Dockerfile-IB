@@ -1,0 +1,20 @@
+
+FROM registry.omni.mil/ironbank/ironbank/redhat/dotnet-core/dotnet-sdk-9.0-ubi9-slim AS build
+WORKDIR /src
+COPY dotnet-test.csproj ./
+RUN dotnet restore
+COPY . .
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+
+# --- runtime stage ---
+FROM registry.omni.mil/ironbank/ironbank/redhat/dotnet-core/aspnetcore-runtime-9.0:9.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish ./
+
+# Env options:
+# - WELL_KNOWN_URL                (full URL) OR
+# - KEYCLOAK_BASE_URL + KEYCLOAK_REALM
+# - ALLOW_INSECURE_HTTP=true      (only if you must talk to http://)
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
+ENTRYPOINT ["dotnet", "dotnet-test.dll"]
