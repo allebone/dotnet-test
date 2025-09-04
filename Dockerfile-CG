@@ -1,4 +1,4 @@
-
+# --- build stage ---
 FROM cgr.dev/chainguard/dotnet-sdk:latest AS build
 WORKDIR /src
 COPY --chown=nonroot:nonroot dotnet-test.csproj ./
