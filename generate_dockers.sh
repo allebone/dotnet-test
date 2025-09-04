@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Registry and project path
 REGISTRY="registry.omni.mil"
-PROJECT="dotnet-test"
+PROJECT="dotnet_test"
 IMAGE="dotnet-test"
 
 # List of variants (Dockerfiles must be named dotnet-MS, dotnet-IB, dotnet-CG)
