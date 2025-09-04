@@ -16,10 +16,6 @@ WORKDIR /app
 COPY --from=build /app/publish ./
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-# Env options:
-# - WELL_KNOWN_URL                (full URL) OR
-# - KEYCLOAK_BASE_URL + KEYCLOAK_REALM
-# - ALLOW_INSECURE_HTTP=true      (only if you must talk to http://)
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 ENTRYPOINT ["dotnet", "dotnet-test.dll"]
