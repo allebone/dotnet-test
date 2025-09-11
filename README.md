@@ -1,4 +1,4 @@
-## How Do I Build?
+### How Do I Build?
 
 Run the generate containers Bash script:
 
@@ -6,8 +6,7 @@ Run the generate containers Bash script:
 bash ./generate_dockers.sh
 ```
 
-
-##How do I test?
+### How do I test?
 
 ```bash
 docker run --rm \
@@ -27,7 +26,8 @@ docker run --rm \
   -e KEYCLOAK_REALM="OMNI" \
   registry.omni.mil/dotnet_test/dotnet-test:cg
 ```
-##How does it Compare?
+
+### How does it Compare?
 
 Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerabilities and Container Size.
 
