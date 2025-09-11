@@ -6,8 +6,8 @@ COPY dotnet-test.csproj ./
 RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
-COPY certificate.crt /usr/local/share/ca-certificates/
-RUN cat /usr/local/share/ca-certificates/certificate.crt >> /etc/ssl/certs/ca-certificates.crt
+COPY DoD_PKE_CA_chain.pem /usr/local/share/ca-certificates/DoD_PKE_CA_chain.crt
+RUN cat /usr/local/share/ca-certificates/DoD_PKE_CA_chain.crt >> /etc/ssl/certs/ca-certificates.crt
 RUN chown -R nonroot:nonroot /app/publish
 USER nonroot
 

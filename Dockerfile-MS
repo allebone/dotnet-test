@@ -1,7 +1,9 @@
-
+# --- build stage ---
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY dotnet-test.csproj ./
+COPY certs/ /etc/pki/ca-trust/source/anchors/
+#RUN update-ca-trust extract
 RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
