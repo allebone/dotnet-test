@@ -23,3 +23,5 @@ docker run --rm \
 ###How does it Compare?
 
 Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerabilities and Container Size.
+
+![Trivvy Compare](Trivvy-Compare.png)
