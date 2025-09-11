@@ -32,3 +32,9 @@ docker run --rm \
 Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerabilities and Container Size.
 
 ![Trivvy Compare](Trivvy-Compare.png)
+
+| Tag | Container Size | Vulnerabilities |
+|-----|----------------|-----------------|
+| `dotnet-test:ms` | TBD | TBD |
+| `dotnet-test:ib` | TBD | TBD |
+| `dotnet-test:cg` | TBD | TBD |
