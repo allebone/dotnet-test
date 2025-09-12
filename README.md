@@ -33,8 +33,8 @@ Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerab
 
 ![Trivvy Compare](Trivvy-Compare.png)
 
-| Tag | Container Size | Vulnerabilities |
+| Tag | Container Size | Total Open Vulnerabilities |
 |-----|----------------|-----------------|
-| `dotnet-test:ms` | TBD | TBD |
-| `dotnet-test:ib` | TBD | TBD |
-| `dotnet-test:cg` | TBD | TBD |
+| `dotnet-test:ms` | 76.88 MiB | 77 |
+| `dotnet-test:ib` | 148.23 MiB | 124 |
+| `dotnet-test:cg` | 55.88 MiB | 0 |
