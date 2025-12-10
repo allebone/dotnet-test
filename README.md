@@ -12,19 +12,19 @@ bash ./generate_dockers.sh
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.mil/dotnet_test/dotnet-test:ms
+  registry.omni.af.mil/dotnet_test/dotnet-test:ms
 ```
 ```bash
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.mil/dotnet_test/dotnet-test:ib
+  registry.omni.af.mil/dotnet_test/dotnet-test:ib
 ```
 ```bash
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.mil/dotnet_test/dotnet-test:cg
+  registry.omni.af.mil/dotnet_test/dotnet-test:cg
 ```
 
 ### How does it Compare?
