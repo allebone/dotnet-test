@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Registry and project path
-REGISTRY="registry.omni.mil"
+REGISTRY="registry.omni.af.mil"
 PROJECT="dotnet_test"
 IMAGE="dotnet-test"
 
