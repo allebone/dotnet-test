@@ -1,5 +1,5 @@
 
-FROM registry.omni.mil/ironbank/ironbank/redhat/dotnet-core/dotnet-sdk-9.0-ubi9-slim AS build
+FROM registry.omni.af.mil/ironbank/ironbank/redhat/dotnet-core/dotnet-sdk-9.0-ubi9-slim AS build
 WORKDIR /src
 COPY dotnet-test.csproj ./
 RUN dotnet restore
@@ -7,7 +7,7 @@ COPY . .
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
 # --- runtime stage ---
-FROM registry.omni.mil/ironbank/ironbank/redhat/dotnet-core/aspnetcore-runtime-9.0:9.0 AS runtime
+FROM registry.omni.af.mil/ironbank/ironbank/redhat/dotnet-core/aspnetcore-runtime-9.0:9.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish ./
 
