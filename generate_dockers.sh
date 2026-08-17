@@ -7,7 +7,7 @@ PROJECT="dotnet_test"
 IMAGE="dotnet-test"
 
 # List of variants (Dockerfiles must be named dotnet-MS, dotnet-IB, dotnet-CG)
-VARIANTS=("MS" "IB" "CG")
+VARIANTS=("MS" "IB" "CG" "MINIMUS")
 
 # Make sure we are logged in
 echo "Logging into $REGISTRY..."
