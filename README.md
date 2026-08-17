@@ -26,6 +26,12 @@ docker run --rm \
   -e KEYCLOAK_REALM="OMNI" \
   registry.omni.af.mil/dotnet_test/dotnet-test:cg
 ```
+```bash
+docker run --rm \
+  -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
+  -e KEYCLOAK_REALM="OMNI" \
+  registry.omni.af.mil/dotnet_test/dotnet-test:minimus
+```
 
 ### How does it Compare?
 
@@ -38,3 +44,4 @@ Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerab
 | `dotnet-test:ms` | 76.88 MiB | 77 |
 | `dotnet-test:ib` | 148.23 MiB | 124 |
 | `dotnet-test:cg` | 55.88 MiB | 0 |
+| `dotnet-test:minimus` | 55.88 MiB | 0 |
