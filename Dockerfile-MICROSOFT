@@ -1,5 +1,5 @@
 # --- build stage ---
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM registry.omni.af.mil/microsoft/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY dotnet-test.csproj ./
 COPY certs/ /etc/pki/ca-trust/source/anchors/
@@ -9,7 +9,8 @@ COPY . .
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
 # --- runtime stage ---
-FROM mcr.microsoft.com/dotnet/runtime:9.0-bookworm-slim AS runtime
+FROM registry.omni.af.mil/microsoft/dotnet/runtime:9.0-bookworm-slim AS runtime
+LABEL fips-140-3-compliant="false"
 # ca-certificates is present on this image; ensure up to date:
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
