@@ -13,6 +13,7 @@ USER nonroot
 
 # --- runtime stage ---
 FROM cgr.dev/chainguard/dotnet-runtime:latest AS runtime
+LABEL fips-140-3-compliant="false"
 WORKDIR /app
 COPY --from=build /app/publish ./
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt

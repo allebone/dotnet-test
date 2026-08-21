@@ -6,8 +6,8 @@ REGISTRY="registry.omni.af.mil"
 PROJECT="dotnet_test"
 IMAGE="dotnet-test"
 
-# List of variants (Dockerfiles must be named dotnet-MS, dotnet-IB, dotnet-CG)
-VARIANTS=("MS" "IB" "CG" "MINIMUS")
+# List of variants (Dockerfiles must be named Dockerfile-<VARIANT>)
+VARIANTS=("MICROSOFT" "IRONBANK" "CHAINGUARD" "MINIMUS")
 
 # Make sure we are logged in
 echo "Logging into $REGISTRY..."

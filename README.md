@@ -12,19 +12,19 @@ bash ./generate_dockers.sh
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.af.mil/dotnet_test/dotnet-test:ms
+  registry.omni.af.mil/dotnet_test/dotnet-test:microsoft
 ```
 ```bash
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.af.mil/dotnet_test/dotnet-test:ib
+  registry.omni.af.mil/dotnet_test/dotnet-test:ironbank
 ```
 ```bash
 docker run --rm \
   -e KEYCLOAK_BASE_URL="https://identity.omni.af.mil" \
   -e KEYCLOAK_REALM="OMNI" \
-  registry.omni.af.mil/dotnet_test/dotnet-test:cg
+  registry.omni.af.mil/dotnet_test/dotnet-test:chainguard
 ```
 ```bash
 docker run --rm \
@@ -39,9 +39,9 @@ Check the Newly Uploaded Containers in Harbor, Compare Number of Trivvy Vulnerab
 
 ![Trivvy Compare](Trivvy-Compare.png)
 
-| Tag | Container Size | Total Open Vulnerabilities |
-|-----|----------------|-----------------|
-| `dotnet-test:ms` | 76.88 MiB | 77 |
-| `dotnet-test:ib` | 148.23 MiB | 124 |
-| `dotnet-test:cg` | 55.88 MiB | 0 |
-| `dotnet-test:minimus` | 55.88 MiB | 0 |
+| Tag | Container Size | Total Findings | Fixable | FIPS 140-3 Compliant |
+|-----|----------------|-----------------|-----------------|-----------------|
+| `dotnet-test:microsoft` | 76.91 MiB | 181 | 0 | No |
+| `dotnet-test:ironbank` | 259.00 MiB | 329 | 0 | Yes |
+| `dotnet-test:chainguard` | 57.20 MiB | 0 | 0 | No |
+| `dotnet-test:minimus` | 71.72 MiB | 0 | 0 | Yes |

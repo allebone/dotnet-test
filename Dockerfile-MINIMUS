@@ -1,0 +1,23 @@
+# --- build stage ---
+FROM registry.omni.af.mil/minimus/dotnet-sdk-fips:latest AS build
+USER root
+WORKDIR /src
+COPY dotnet-test.csproj ./
+RUN dotnet restore
+COPY . .
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+COPY DoD_PKE_CA_chain.pem /usr/local/share/ca-certificates/DoD_PKE_CA_chain.crt
+RUN cat /usr/local/share/ca-certificates/DoD_PKE_CA_chain.crt >> /etc/ssl/certs/ca-certificates.crt
+RUN chown -R app:app /app/publish
+USER app
+
+# --- runtime stage ---
+FROM registry.omni.af.mil/minimus/dotnet-runtime-fips:latest AS runtime
+LABEL fips-140-3-compliant="true"
+WORKDIR /app
+COPY --from=build /app/publish ./
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
+ENTRYPOINT ["dotnet", "dotnet-test.dll"]
